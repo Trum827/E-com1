@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.btn-primary {
+  @apply bg-rose-500 text-white px-8 py-4 rounded-full hover:bg-rose-600 transition-colors;
+}
+
+.btn-secondary {
+  @apply border-2 border-rose-500 text-rose-500 px-8 py-4 rounded-full hover:bg-rose-50 transition-colors;
+}

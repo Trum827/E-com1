@@ -1,0 +1,52 @@
+{% if section.settings.image != blank %}
+<div class="relative">
+  <div class="absolute inset-0 bg-gradient-to-r from-rose-500/30 to-transparent"></div>
+  <div class="h-[600px] bg-cover bg-center" style="background-image: url('{{ section.settings.image | image_url: width: 2000 }}')">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+      <div class="relative z-10 max-w-2xl">
+        <h1 class="text-5xl font-bold text-white mb-6">{{ section.settings.heading }}</h1>
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn-primary">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Share the Love – Modern Cat Furniture for You and Your Furry Valentine"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SHOP VALENTINE'S COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

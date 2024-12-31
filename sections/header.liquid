@@ -1,0 +1,31 @@
+<header class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          {% if settings.logo != blank %}
+            <img src="{{ settings.logo | image_url }}" alt="{{ shop.name }}" class="h-8">
+          {% else %}
+            <span class="text-2xl font-semibold text-gray-900">{{ shop.name }}</span>
+          {% endif %}
+        </a>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="text-gray-700 hover:text-rose-500">{{ link.title }}</a>
+        {% endfor %}
+        <a href="/cart" class="text-gray-700 hover:text-rose-500 relative">
+          {% render 'icon-cart' %}
+          <span class="absolute -top-2 -right-2 bg-rose-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            {{ cart.item_count }}
+          </span>
+        </a>
+      </nav>
+
+      <button class="md:hidden">
+        {% render 'icon-menu' %}
+      </button>
+    </div>
+  </div>
+</header>

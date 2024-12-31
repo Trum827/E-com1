@@ -1,0 +1,65 @@
+<section class="bg-rose-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {% render 'icon-heart' class: 'h-12 w-12 text-rose-500 mx-auto mb-4' %}
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ section.settings.heading }}</h2>
+    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">{{ section.settings.description }}</p>
+    
+    {% form 'customer', class: 'max-w-md mx-auto flex gap-4' %}
+      <input
+        type="hidden"
+        name="contact[tags]"
+        value="newsletter"
+      >
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="{{ section.settings.placeholder }}"
+        class="flex-1 px-4 py-2 rounded-full border-2 border-rose-200 focus:border-rose-500 focus:outline-none"
+        required
+      >
+      <button
+        type="submit"
+        class="bg-rose-500 text-white px-6 py-2 rounded-full hover:bg-rose-600 transition-colors"
+      >
+        {{ section.settings.button_label }}
+      </button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay in the Loop for Purr-fect Deals"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Subscribe to our newsletter and be the first to know about our Valentine's specials, new products, and exclusive offers!"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email Placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}
